@@ -41,6 +41,39 @@ impl BrailleChar {
         char::from_u32(Self::UNICODE_BASE + self.bits as u32).unwrap()
     }
 
+    pub const fn english_to_bits(c: char) -> Option<u8> {
+        match c {
+            'a' | 'A' => Some(0b000001), // ⠁
+            'b' | 'B' => Some(0b000011), // ⠃
+            'c' | 'C' => Some(0b001001), // ⠉
+            'd' | 'D' => Some(0b011001), // ⠙
+            'e' | 'E' => Some(0b010001), // ⠑
+            'f' | 'F' => Some(0b001011), // ⠋
+            'g' | 'G' => Some(0b011011), // ⠛
+            'h' | 'H' => Some(0b010011), // ⠓
+            'i' | 'I' => Some(0b001010), // ⠊
+            'j' | 'J' => Some(0b011010), // ⠚
+
+            'k' | 'K' => Some(0b000101), // ⠅
+            'l' | 'L' => Some(0b000111), // ⠇
+            'm' | 'M' => Some(0b001101), // ⠍
+            'n' | 'N' => Some(0b011101), // ⠝
+            'o' | 'O' => Some(0b010101), // ⠕
+            'p' | 'P' => Some(0b001111), // ⠏
+            'q' | 'Q' => Some(0b011111), // ⠟
+            'r' | 'R' => Some(0b010111), // ⠗
+            's' | 'S' => Some(0b001110), // ⠎
+            't' | 'T' => Some(0b011110), // ⠞
+
+            'u' | 'U' => Some(0b100101), // ⠥
+            'v' | 'V' => Some(0b100111), // ⠧
+            'w' | 'W' => Some(0b111010), // ⠺
+            'x' | 'X' => Some(0b101101), // ⠭
+            'y' | 'Y' => Some(0b111101), // ⠽
+            'z' | 'Z' => Some(0b110101), // ⠵
+            _ => None,
+        }
+    }
     pub fn from_unicode(c: char) -> Option<Self> {
         let code = c as u32;
 
